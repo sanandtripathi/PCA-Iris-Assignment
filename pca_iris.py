@@ -1,3 +1,8 @@
+#Sanand Tripathi
+#Mtech AI
+#2511AI03
+#Assignment 1
+
 import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
@@ -9,8 +14,7 @@ def run_iris_pca():
     """
     This function performs PCA on the Iris dataset and saves a visualization.
     """
-    # 1. Load the Dataset
-    # We can load the Iris dataset directly from scikit-learn, which is very convenient.
+    #load the dataset
     iris = load_iris()
     # The data is in iris.data, and the target (species) is in iris.target.
     # The feature names are in iris.feature_names.
@@ -25,7 +29,7 @@ def run_iris_pca():
     print(df.head())
     print("\n")
 
-    # 2. Prepare the Data
+    # Prepare the Data
     # Separate features (X) from the target (y)
     features = ['sepal length (cm)', 'sepal width (cm)', 'petal length (cm)', 'petal width (cm)']
     X = df[features].values
@@ -35,7 +39,7 @@ def run_iris_pca():
     # It standardizes the data so that features with larger values don't dominate the algorithm.
     X_scaled = StandardScaler().fit_transform(X)
     
-    # 3. Perform PCA
+    # Perform PCA
     # We are reducing the 4 features down to 2 principal components.
     pca = PCA(n_components=2)
     principal_components = pca.fit_transform(X_scaled)
@@ -50,7 +54,7 @@ def run_iris_pca():
     print(pca_df.head())
     print("\n")
 
-    # 4. Analyze the Results
+    # Analyze the Results
     # 'explained_variance_ratio_' shows how much information (variance)
     # is captured by each principal component.
     explained_variance = pca.explained_variance_ratio_
@@ -60,8 +64,8 @@ def run_iris_pca():
     print("\n")
 
 
-    # 5. Visualize the PCA results
-    # This plot is the key result for your report.
+    # Visualize the PCA results
+    # This plot is the key result .
     plt.figure(figsize=(10, 8))
     sns.scatterplot(x='PC 1', y='PC 2', hue='species', data=pca_df, palette='viridis', s=100)
     
@@ -79,6 +83,6 @@ def run_iris_pca():
     plt.show()
 
 
-# Run the main function
+# main function
 if __name__ == '__main__':
     run_iris_pca()
